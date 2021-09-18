@@ -1,0 +1,27 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: interface-logs
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/logs?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  profiles:
+    active: dev
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:/com/logs/mapper/xml/*Mapper.xml
+  type-aliases-package: com.logs.model.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
